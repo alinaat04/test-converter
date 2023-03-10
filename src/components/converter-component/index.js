@@ -33,7 +33,7 @@ export default function Converter() {
             setCurrencyTo(value * (ratesUSD / ratesEUR));
         } else if (selectedValueFrom === 'USD' && selectedValueTo === 'UAH'){
             setCurrencyFrom(value);
-            setCurrencyTo(value / ratesUSD);
+            setCurrencyTo(value * ratesUSD);
         } else if (selectedValueFrom === 'EUR' && selectedValueTo === 'USD'){
             setCurrencyFrom(value);
             setCurrencyTo(value * (ratesUSD / ratesEUR));
@@ -42,7 +42,7 @@ export default function Converter() {
             setCurrencyTo(value * ratesEUR);
         } else if (selectedValueFrom === 'UAH' && selectedValueTo === 'EUR'){
             setCurrencyFrom(value);
-            setCurrencyTo(value * ratesEUR)
+            setCurrencyTo(value / ratesEUR)
         } else{
             setCurrencyFrom(value);
             setCurrencyTo(value)
@@ -58,16 +58,16 @@ export default function Converter() {
             setCurrencyFrom(value * (ratesUSD / ratesEUR));
         } else if (selectedValueFrom === 'USD' && selectedValueTo === 'UAH'){
             setCurrencyTo(value);
-            setCurrencyFrom(value * ratesUSD);
+            setCurrencyFrom(value / ratesUSD);
         } else if (selectedValueFrom === 'EUR' && selectedValueTo === 'USD'){
             setCurrencyTo(value);
             setCurrencyFrom(value * (ratesUSD / ratesEUR));
         } else if (selectedValueFrom === 'EUR' && selectedValueTo === 'UAH'){
             setCurrencyTo(value);
-            setCurrencyFrom(value * ratesEUR);
+            setCurrencyFrom(value / ratesEUR);
         } else if (selectedValueFrom === 'UAH' && selectedValueTo === 'EUR'){
             setCurrencyTo(value);
-            setCurrencyFrom(value / ratesEUR)
+            setCurrencyFrom(value * ratesEUR)
         } else{
             setCurrencyFrom(value);
             setCurrencyTo(value)
