@@ -27,7 +27,7 @@ export default function Converter() {
         
         if(selectedValueFrom === 'UAH' && selectedValueTo === 'USD'){
             setCurrencyFrom(value);
-            setCurrencyTo(value * ratesUSD)
+            setCurrencyTo(value / ratesUSD)
         } else if (selectedValueFrom === 'USD' && selectedValueTo === 'EUR'){
             setCurrencyFrom(value);
             setCurrencyTo(value * (ratesUSD / ratesEUR));
