@@ -1,52 +1,43 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { getCourse } from "../../api/api";
 import './style.css'
 import './null.css'
 
-export default class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      USD_СС: '',
-      EUR_СС: '',
-      USD_RATE: 0,
-      EUR_RATE: 0
-    }
+export default function Header() {
+  const [USD_СС, setUSD_СС] = useState('');
+  const [EUR_СС, setEUR_СС] = useState('');
+  const [USD_RATE, setUSD_RATE] = useState(0);
+  const [EUR_RATE, setEUR_RATE] = useState(0);
+
+const newF = () => {
+  getCourse().then((data) => {
+    data.filter((elem) => {
+      if (elem.cc == "USD") {
+        setUSD_СС(elem.cc),
+        setUSD_RATE(elem.rate) 
+      } else if (elem.cc == "EUR"){
+        setEUR_СС(elem.cc),
+        setEUR_RATE(elem.rate) 
+      }
+    });
   }
-
-  componentDidMount() {
-    getCourse().then((data) => {
-      data.filter((elem) => {
-        if (elem.cc == "USD") {
-          this.setState({
-            USD_СС: elem.cc,
-            USD_RATE: elem.rate
-          }) 
-        } else if (elem.cc == "EUR"){
-          this.setState({
-            EUR_СС: elem.cc,
-            EUR_RATE: elem.rate
-          }) 
-        }
-      });
-    }
-    );
-  }
+  );
+};
 
 
 
-  render() {
+
+
     return (
       <div className="header">
         <article className="usd">
-          <h1>{this.state.USD_СС}</h1>
-          <h1>{this.state.USD_RATE}</h1>
+          <h1>{USD_СС}</h1>
+          <h1>{USD_RATE}</h1>
         </article>
         <article className="eur">
-          <h1>{this.state.EUR_СС}</h1>
-          <h1>{this.state.EUR_RATE}</h1>
+          <h1>{EUR_СС}</h1>
+          <h1>{EUR_RATE}</h1>
         </article>
       </div>
     )
-  }
 };
